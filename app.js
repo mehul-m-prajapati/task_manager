@@ -3,6 +3,8 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 4000;
 const tasks = require('./routes/tasks');
+const connectDB = require('./db/connect');
+require('dotenv').config();
 
 app.use(express.static(__dirname + '/public/'));
 
@@ -22,8 +24,17 @@ app.use('/api/v1/tasks', tasks);
 // app.patch('/api/v1/tasks/:id') - update a task
 // app.delete('/api/v1/tasks/:id') - delete a task
 
+const start = async () => {
+    try {
+        await connectDB(process.env.MONGO_URI);         
+        // Start the web server
+        app.listen(port, () => {
+            console.log(`Listening on port:${port}`);
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-// Start the web server
-app.listen(port, () => {
-    console.log(`Listening on port:${port}`)
-});
+start();
+
