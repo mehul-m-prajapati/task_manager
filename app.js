@@ -15,6 +15,9 @@ app.use(express.json()); // to have data in req.body
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + "/views", '/index.html'));
 });
+app.get('/edit-task', (req, res) => {
+    res.sendFile(path.join(__dirname + "/views", '/task.html'));
+});
 
 app.use('/api/v1/tasks', tasks);
 
@@ -26,7 +29,7 @@ app.use('/api/v1/tasks', tasks);
 
 const start = async () => {
     try {
-        await connectDB(process.env.MONGO_URI);         
+        await connectDB(process.env.MONGO_URI);
         // Start the web server
         app.listen(port, () => {
             console.log(`Listening on port:${port}`);
@@ -37,4 +40,3 @@ const start = async () => {
 }
 
 start();
-
