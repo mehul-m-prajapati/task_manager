@@ -16,6 +16,13 @@ app.get('/', (req, res) => {
 
 app.use('/api/v1/tasks', tasks);
 
+// app.get('/api/v1/tasks') - get all tasks
+// app.post('/api/v1/tasks') - create a new task
+// app.get('/api/v1/tasks/:id') - get a single task
+// app.patch('/api/v1/tasks/:id') - update a task
+// app.delete('/api/v1/tasks/:id') - delete a task
+
+
 // Start the web server
 app.listen(port, () => {
     console.log(`Listening on port:${port}`)
