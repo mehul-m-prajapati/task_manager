@@ -7,7 +7,7 @@ const errHandlerMiddleware = (err, req, res, next) => {
     }
 
     // default error message
-    return res.status(500).json({msg: "Something went wrong. Please try again."});
+    return res.status(500).json(err);
    // return res.status(err.status).json({msg: err.message});
 }
 
