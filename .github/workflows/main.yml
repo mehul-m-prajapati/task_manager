@@ -40,4 +40,5 @@ jobs:
         with:
           node-version: 12.x
           cache: npm
+      - run: npm install
       - run: npm run test
